@@ -1,0 +1,34 @@
+// Breakpoints
+// 600px and DOWN: phones
+// 600px and UP: portrait tablets and large phones
+// 768px and up: landscape tablets
+// 992px and up: laptops/desktops
+// 1200px and up: large laptops and desktops
+
+// Colors
+$columbia-blue: rgb(151, 180, 255);
+$dodger-blue: rgb(35, 123, 255);
+$lemon: rgb(240, 240, 24);
+$lochmara: rgb(52, 80, 161);
+$midnight-blue: rgb(31, 51, 110);
+$psychedelic-purple: rgb(235, 6, 255);
+$sapphire: rgb(4, 25, 85);
+$white: rgb(255, 255, 255);
+
+$background-1: $sapphire;
+$background-2: $psychedelic-purple;
+$background-3: $lochmara;
+$button-border-1: $midnight-blue;
+$word-color-1: $white;
+$word-color-2: $lemon;
+
+// Animations
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}

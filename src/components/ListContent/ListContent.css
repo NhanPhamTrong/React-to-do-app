@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a, a:active {
+  text-decoration: none;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+button {
+  cursor: pointer;
+}
+
+input, button {
+  font: inherit;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+body #root {
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.main-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 4.5rem 0 0 4.5rem;
+  -webkit-animation: fadeOut 0.4s;
+          animation: fadeOut 0.4s;
+  background-color: #3450a1;
+  display: none;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+.main-section.active {
+  -webkit-animation: fadeIn 0.4s;
+          animation: fadeIn 0.4s;
+  display: block;
+}
+/*# sourceMappingURL=ListContent.css.map */
