@@ -18,10 +18,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 button {
   cursor: pointer;
+  background-color: transparent;
 }
 
 input, button {
   font: inherit;
+  border: none;
+  outline: none;
 }
 
 ol, ul {
@@ -69,6 +72,180 @@ body {
 }
 
 body #root {
+  overflow-x: hidden;
   position: relative;
+}
+
+@media only screen and (min-width: 786px) {
+  #root {
+    background-color: #3450a1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.main-section li {
+  padding: 1rem;
+  background-color: #041955;
+  border-radius: 1rem;
+  color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-column-gap: 0.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-section li .checkbox {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  height: 2rem;
+  width: 2rem;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#237bff), to(#eb06ff));
+  background-image: linear-gradient(#237bff, #eb06ff);
+  border-radius: 10rem;
+  color: white;
+  position: relative;
+}
+
+.main-section li .checkbox i {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main-section li .checkbox:before {
+  content: "";
+  height: calc(2rem - 4px);
+  width: calc(2rem - 4px);
+  background-color: #1f336e;
+  border-radius: 10rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main-section li p {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  font-size: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main-section li p:hover {
+  white-space: normal;
+}
+
+.main-section li .task-menu {
+  -ms-grid-column: 3;
+  grid-column: 3;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  position: relative;
+}
+
+.main-section li .task-menu .task-menu-toggler {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 10rem;
+  color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.main-section li .task-menu .task-menu-toggler.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.main-section li .task-menu div {
+  -webkit-animation: fadeOut 0.4s;
+          animation: fadeOut 0.4s;
+  background-color: #1f336e;
+  border-radius: 0.5rem;
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 105%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  z-index: 10;
+}
+
+.main-section li .task-menu div button {
+  padding: 0.75rem 1rem;
+  color: white;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.main-section li .task-menu div button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.main-section li .task-menu div .update {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.main-section li .task-menu div .delete {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.main-section li .task-menu div.active {
+  -webkit-animation: fadeIn 0.4s;
+          animation: fadeIn 0.4s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main-section li .update-task {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+.main-section li .update-task input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.main-section li.completed .checkbox {
+  background-image: none;
+}
+
+.main-section li.completed .checkbox i {
+  display: block;
+}
+
+.main-section li.completed .checkbox:before {
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#237bff), to(#eb06ff));
+  background-image: linear-gradient(#237bff, #eb06ff);
+}
+
+.main-section li.completed p {
+  color: #a0a0a0;
+  text-decoration: line-through;
 }
 /*# sourceMappingURL=Task.css.map */

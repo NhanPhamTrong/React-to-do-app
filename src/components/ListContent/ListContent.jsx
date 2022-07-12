@@ -9,7 +9,7 @@ export const ListContent = (props) => {
 
     const HandleClickOutside = (e) => {
         let chosenTask = task.map((name) => {
-            if (e.target.classList.contains("task-menu-toggler") === false) {
+            if (e.target.classList.contains("task-menu-toggler") === false && e.target.closest("div").classList.contains("task-options") === false) {
                 name.isActive = false
             }
             return name
@@ -27,6 +27,9 @@ export const ListContent = (props) => {
             if (name.id === order) {
                 name.isActive = name.isActive ? false : true
             }
+            else {
+                name.isActive = false
+            }
             return name
         });
 
@@ -38,7 +41,11 @@ export const ListContent = (props) => {
             task.push(newTask);
         }
 
-        setTask((prevValue) => [...prevValue]);
+        setTask((prevValue) => [...prevValue])
+        
+        if (statistic[2]) {
+            GetCompleted()
+        }
     }
 
     useEffect(() => {
@@ -79,10 +86,17 @@ export const ListContent = (props) => {
             return name
         });
 
-        setTask(chosenTask);
+        setTask(chosenTask)
+
+        if (statistic[1]) {
+            GetActive()
+        }
+        else if (statistic[2]) {
+            GetCompleted()
+        }
     }
 
-    const GetCompleted = (e) => {
+    const GetCompleted = () => {
         setStatistic([false, false, true])
         let chosenTask = task.map((name) => {
             name.isShown = name.isCompleted ? true : false
@@ -92,7 +106,7 @@ export const ListContent = (props) => {
         setTask(chosenTask);
     }
 
-    const GetActive = (e) => {
+    const GetActive = () => {
         setStatistic([false, true, false])
         let chosenTask = task.map((name) => {
             name.isShown = name.isCompleted ? false : true
@@ -102,7 +116,7 @@ export const ListContent = (props) => {
         setTask(chosenTask);
     }
 
-    const GetAll = (e) => {
+    const GetAll = () => {
         setStatistic([true, false, false])
         let chosenTask = task.map((name) => {
             name.isShown = true
@@ -114,13 +128,19 @@ export const ListContent = (props) => {
 
     return (
         <div className={"main-section" + (props.isActive ? " active" : "") + (props.isOpen ? " open" : "")}>
-            <button className="close-main-section" type="button" onClick={CloseMainSection}>=</button>
+            <button className="close-main-section" type="button" onClick={CloseMainSection} title="Menu">
+                <i className="fa-solid fa-bars"></i>
+            </button>
             <div className={"list-content order-" + props.listOrder}>
                 <div className="list-header">
                     <h1>{props.listName}</h1>
                     <div className="list-btn">
-                        <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark}>bookmark</button>
-                        <button className="delete" type="button" onClick={DeleteList}>delete list</button>
+                        <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark} title="Bookmark">
+                            <i className="fa-solid fa-star"></i>
+                        </button>
+                        <button className="delete" type="button" onClick={DeleteList} title="Delete this list">
+                            <i className="fa-solid fa-trash-can"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -128,7 +148,7 @@ export const ListContent = (props) => {
 
                 <ul>
                     {task.map((name, index) => (
-                        <Task key={name.id} text={name.text} id={name.id} isActive={name.isActive} isShown={name.isShown} onDeleteTask={DeleteTask} onUpdate={UpdateTask} onCompleted={CompletedTask} onClick={ClickTaskMenuToggler} />
+                        <Task key={name.id} text={name.text} id={name.id} isActive={name.isActive} isCompleted={name.isCompleted} isShown={name.isShown} onDeleteTask={DeleteTask} onUpdate={UpdateTask} onCompleted={CompletedTask} onClick={ClickTaskMenuToggler} />
                     ))}
                 </ul>
 

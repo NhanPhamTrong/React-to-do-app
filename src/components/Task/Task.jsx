@@ -1,3 +1,4 @@
+import "./Task.scss";
 import { useState } from "react";
 import { Form } from "../Form";
 
@@ -8,7 +9,7 @@ export const Task = (props) => {
     });
 
     const ClickTaskMenuToggler = (e) => {
-        const order = parseInt(e.target.getAttribute("order"));
+        const order = parseInt(e.currentTarget.getAttribute("order"));
         props.onClick(order);
     }
 
@@ -32,10 +33,7 @@ export const Task = (props) => {
     }
 
     const CompletedTask = (e) => {
-        if (e.target.tagName !== "BUTTON" && e.target.tagName !== "INPUT") {
-            e.currentTarget.classList.toggle("completed")
-            props.onCompleted(props.id)
-        }
+        props.onCompleted(props.id)
     }
 
     if (edit.id) {
@@ -48,12 +46,16 @@ export const Task = (props) => {
     }
 
     return (
-        <li style={props.isShown ? {"display" : "block"} : {"display" : "none"}} onClick={CompletedTask}>
-            <div className="checkbox"></div>
+        <li className={props.isCompleted ? "completed" : ""} style={props.isShown ? {display : "grid"} : {display : "none"}}>
+            <button className="checkbox" type="button" onClick={CompletedTask}>
+                <i className="fa-solid fa-check"></i>
+            </button>
             <p>{props.text}</p>
             <div className="task-menu">
-                <button className={"task-menu-toggler " + (props.isActive ? "active" : "")} type="button" order={props.id} onClick={ClickTaskMenuToggler}>:</button>
-                <div className={props.isActive ? "active" : ""}>
+                <button className={"task-menu-toggler " + (props.isActive ? "active" : "")} type="button" order={props.id} onClick={ClickTaskMenuToggler}>
+                    <i className="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+                <div className={"task-options " + (props.isActive ? "active" : "")}>
                     <button className="update" type="button" onClick={UpdateTask}>Update</button>
                     <button className="delete" type="button" onClick={DeleteTask}>Delete</button>
                 </div>

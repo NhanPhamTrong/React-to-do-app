@@ -31,11 +31,12 @@ export const App = () => {
         const order = parseInt(e.currentTarget.getAttribute("order"));
 
         let chosenList = list.map((name) => {
-            name.isActive = name.id === order ? true : false;
+            name.isActive = name.id === order ? true : false
             return name
         });
 
-        setList(chosenList);
+        setList(chosenList)
+        setMainSectionOpen(false)
     }
 
     const DeleteList = (listOrder) => {
@@ -44,7 +45,9 @@ export const App = () => {
 
     const Bookmark = (id) => {
         let chosenList = list.map((name) => {
-            name.bookmarked = name.id === id ? true : false;
+            if (name.id === id) {
+                name.bookmarked = name.bookmarked ? false : true
+            }
             return name
         });
 

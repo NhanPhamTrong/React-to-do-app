@@ -7,20 +7,29 @@
 
 // Colors
 $columbia-blue: rgb(151, 180, 255);
+$dark-gray: rgb(160, 160, 160);
 $dodger-blue: rgb(35, 123, 255);
 $lemon: rgb(240, 240, 24);
 $lochmara: rgb(52, 80, 161);
 $midnight-blue: rgb(31, 51, 110);
 $psychedelic-purple: rgb(235, 6, 255);
 $sapphire: rgb(4, 25, 85);
+$scarlet: rgb(255, 20, 20);
 $white: rgb(255, 255, 255);
 
 $background-1: $sapphire;
 $background-2: $psychedelic-purple;
 $background-3: $lochmara;
+$background-4: $scarlet;
+$background-5: $lemon;
+$background-6: $midnight-blue;
+$background-7: linear-gradient($dodger-blue, $psychedelic-purple);
 $button-border-1: $midnight-blue;
+$checkbox-border: linear-gradient($dodger-blue, $psychedelic-purple);
 $word-color-1: $white;
 $word-color-2: $lemon;
+$word-color-3: $dark-gray;
+$word-color-4: $dodger-blue;
 
 // Animations
 @keyframes fadeIn {

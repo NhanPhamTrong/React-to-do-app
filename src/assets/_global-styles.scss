@@ -5,6 +5,14 @@ body {
     font-family: 'Noto Sans TC', sans-serif;
 
     #root {
+        overflow-x: hidden;
         position: relative;
+    }
+}
+
+@media only screen and (min-width: 786px) {
+    #root {
+        background-color: $background-3;
+        display: flex;
     }
 }

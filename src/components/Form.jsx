@@ -58,7 +58,6 @@ export const Form = (props) => {
     else if (props.type === "input-task") {
         return (
             <form className="input-task" onSubmit={HandleSubmit}>
-                <button type="button">++</button>
                 <input type="text" placeholder="Your task..." value={input} onChange={HandleChange} />
             </form>
         )

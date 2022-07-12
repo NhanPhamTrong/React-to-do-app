@@ -18,10 +18,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 button {
   cursor: pointer;
+  background-color: transparent;
 }
 
 input, button {
   font: inherit;
+  border: none;
+  outline: none;
 }
 
 ol, ul {
@@ -69,23 +72,28 @@ body {
 }
 
 body #root {
+  overflow-x: hidden;
   position: relative;
+}
+
+@media only screen and (min-width: 786px) {
+  #root {
+    background-color: #3450a1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 #menu {
   width: 100%;
   min-height: 100vh;
   background-color: #041955;
-  padding: 4.5rem 0 0 4.5rem;
+  padding: 4.5rem 4.5rem 0;
   color: white;
 }
 
-#menu .container {
-  height: 80vh;
-  width: 80%;
-}
-
-#menu .container .open-main-section-btn {
+#menu .open-main-section {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -95,7 +103,7 @@ body #root {
           justify-content: flex-end;
 }
 
-#menu .container .open-main-section-btn .open-main-section {
+#menu .open-main-section button {
   height: 4rem;
   width: 4rem;
   background-color: transparent;
@@ -105,18 +113,18 @@ body #root {
   font-size: 1.25rem;
 }
 
-#menu .container .avatar img {
+#menu .avatar img {
   height: 7.5rem;
   width: 7.5rem;
   margin-bottom: 1rem;
   border-radius: 100%;
 }
 
-#menu .container .avatar h1 {
+#menu .avatar h1 {
   font-size: 2.5rem;
 }
 
-#menu .container .input-list {
+#menu .input-list {
   height: 3.6rem;
   margin-top: 1rem;
   border-radius: 10rem;
@@ -130,7 +138,7 @@ body #root {
   overflow: hidden;
 }
 
-#menu .container .input-list button {
+#menu .input-list button {
   height: 3rem;
   width: 3rem;
   background-color: #eb06ff;
@@ -155,12 +163,12 @@ body #root {
   transition: 0.4s;
 }
 
-#menu .container .input-list button:hover {
+#menu .input-list button:hover {
   -webkit-box-shadow: 0 0 5px 0 #eb06ff;
           box-shadow: 0 0 5px 0 #eb06ff;
 }
 
-#menu .container .input-list button.active {
+#menu .input-list button.active {
   -webkit-box-shadow: 0 0 5px 0 #eb06ff;
           box-shadow: 0 0 5px 0 #eb06ff;
   left: 0.3rem;
@@ -170,51 +178,58 @@ body #root {
   transition: 0.4s;
 }
 
-#menu .container .input-list input {
+#menu .input-list input {
   width: 100%;
   height: 3rem;
   padding-left: 4rem;
-  border: none;
   border-radius: 10rem;
-  outline: none;
   position: relative;
   right: 100%;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
-#menu .container .input-list input.active {
+#menu .input-list input.active {
   right: 0;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
-#menu .container ul {
-  height: 14.25rem;
+#menu ul {
+  max-height: 14.25rem;
   margin-top: 1rem;
-  overflow: auto;
+  display: -ms-grid;
+  display: grid;
+  grid-row-gap: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-#menu .container ul li {
-  margin-bottom: 1rem;
+#menu ul li {
+  padding: 0;
 }
 
-#menu .container ul li button {
+#menu ul li button {
   width: 100%;
   padding: 1rem 2rem;
   background-color: transparent;
   border: none;
   border-radius: 10rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-#menu .container ul li button h2 {
-  width: 90%;
+#menu ul li button h2 {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
   color: white;
   text-align: left;
   overflow: hidden;
@@ -222,24 +237,39 @@ body #root {
   white-space: nowrap;
 }
 
-#menu .container ul li button span {
+#menu ul li button span {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
   height: 1.5rem;
   width: 1.5rem;
   font-size: 1.5rem;
   color: transparent;
 }
 
-#menu .container ul li button span.active {
+#menu ul li button span.active {
   color: #f0f018;
 }
 
-#menu .container ul li button:hover h2 {
-  overflow: hidden;
-  text-overflow: ellipsis;
+#menu ul li button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#menu ul li button:hover h2 {
   white-space: normal;
 }
 
-#menu .container ul li.active button {
+#menu ul li.active button {
   background-color: #3450a1;
+}
+
+@media only screen and (min-width: 786px) {
+  #menu {
+    width: 35%;
+  }
+  #menu .open-main-section {
+    display: none;
+  }
 }
 /*# sourceMappingURL=Menu.css.map */

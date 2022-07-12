@@ -17,10 +17,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 button {
     cursor: pointer;
+    background-color: transparent;
 }
 
 input, button {
     font: inherit;
+    border: none;
+    outline: none;
 }
 
 ol, ul {

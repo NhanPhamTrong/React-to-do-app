@@ -1,59 +1,119 @@
 @import "../../assets/global-styles";
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-      to { opacity: 0; }
-}
-
 .main-section {
     width: 100%;
-    min-height: 100vh;
-    padding: 4.5rem 0 0 4.5rem;
+    height: 80vh;
+    padding: 2rem 4.5rem 0;
     animation: fadeOut 0.4s;
     background-color: $background-3;
+    border-radius: 2rem;
     display: none;
     position: absolute;
-    top: 0;
+    right: -95%;
+    top: 10vh;
     z-index: 10;
+    transition: 0.4s;
     
     .close-main-section {
-        
+        height: 2.5rem;
+        width: 2.5rem;
+        margin-bottom: 2rem;
+        color: $word-color-1;
+        font-size: 2.5rem;
     }
 
-    .list-content {    
+    .list-content {
+        display: grid;
+        grid-row-gap: 1.5rem;
+
         .list-header {
+            display: grid;
+            align-items: center;
+            justify-content: space-between;
+
             h1 {
-    
+                grid-column: 1;
+                color: $word-color-1;
+                font-size: 1.75rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                transition: 2s;
+            }
+
+            h1:hover {
+                white-space: normal;
+                transition: 2s;
             }
     
             .list-btn {
-                .bookmark {
-    
+                grid-column: 2;
+
+                button {
+                    height: 2rem;
+                    width: 2rem;
+                    margin-right: 0.5rem;
+                    border-radius: 0.5rem;
+                    color: $word-color-1;
+                    font-size: 1rem;
+                    transition: 0.2s;
+                }
+
+                .bookmark.active {
+                    background-color: $background-5;
+                    transition: 0.2s;
                 }
     
                 .delete {
-    
+                    background-color: $background-4;
                 }
             }
         }
     
         .input-task {
-            button {
-    
-            }
-    
             input {
-    
+                width: 100%;
+                padding: 1rem 2rem;
+                background-color: $background-1;
+                border-radius: 1rem;
+                box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.4);
+                color: $word-color-1;
+            }
+
+            input::placeholder {
+                color: rgba(255, 255, 255, 0.6);
             }
         }
     
         ul {
+            max-height: 18rem;
+            display: grid;
+            grid-row-gap: 0.5rem;
+            overflow: auto;
+        }
+
+        .statistic {
+            padding: 1rem;
+            background-color: $background-1;
+            border-radius: 1rem;
+            box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: space-around;
             
+            button {
+                color: $word-color-1;
+                transition: 0.2s;
+            }
+
+            button.active {
+                color: $word-color-4;
+                transform: scale(1.15) translate(0);
+            }
+
+            button:hover {
+                transform: scale(1.15) translate(0);
+                transition: 0.2s;
+            }
         }
     }
 }
@@ -61,4 +121,28 @@
 .main-section.active {
     animation: fadeIn 0.4s;
     display: block;
+}
+
+.main-section.open {
+    height: 100vh;
+    border-radius: 0;
+    right: 0;
+    top: 0;
+    transition: 0.4s;
+}
+
+@media only screen and (min-width: 786px) {
+    .main-section {
+        height: 100vh;
+        width: 65%;
+        padding: 4.5rem 4.5rem 0;
+        border-radius: 0;
+        position: relative;
+        right: 0;
+        top: 0;
+
+        .close-main-section {
+            display: none;
+        }
+    }
 }
