@@ -1,5 +1,4 @@
-import { ListContent } from "./ListContent/ListContent";
-// import { Form } from "./Form";
+import { MainSection } from "./MainSection/MainSection";
 import { useState } from "react";
 import { Menu } from "./Menu/Menu";
 
@@ -58,7 +57,7 @@ export const App = () => {
         <>
             <Menu list={list} AddList={AddList} GetList={GetList} onOpenMainSection={OpenMainSection} />
             {list.map((name, index) => (
-                <ListContent key={name.id} listOrder={name.id} listName={name.text} isActive={name.isActive} isOpen={mainSectionOpen} onCloseMainSection={CloseMainSection} onDeleteList={DeleteList} onBookmark={Bookmark} />
+                <MainSection key={name.id} listOrder={name.id} listName={name.text} isActive={name.isActive} isOpen={mainSectionOpen} onCloseMainSection={CloseMainSection} onDeleteList={DeleteList} onBookmark={Bookmark} />
             ))}
         </>
     )

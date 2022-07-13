@@ -1,9 +1,9 @@
-import "./ListContent.scss";
+import "./MainSection.scss";
 import { useEffect, useState } from "react";
 import { Form } from "../Form";
 import { Task } from "../Task/Task";
 
-export const ListContent = (props) => {
+export const MainSection = (props) => {
     const [task, setTask] = useState([])
     const [statistic, setStatistic] = useState([true, false, false])
 
