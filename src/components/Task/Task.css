@@ -32,37 +32,37 @@ ol, ul {
 }
 
 @-webkit-keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 }
 
 @keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes fadeOut {
-  from {
+  0% {
     opacity: 1;
   }
-  to {
+  100% {
     opacity: 0;
   }
 }
 
 @keyframes fadeOut {
-  from {
+  0% {
     opacity: 1;
   }
-  to {
+  100% {
     opacity: 0;
   }
 }
@@ -87,8 +87,11 @@ body #root {
 
 .main-section li {
   padding: 1rem;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
   background-color: #041955;
-  border-radius: 1rem;
+  border: #3450a1 solid;
+  border-width: 1px 0;
   color: white;
   display: -ms-grid;
   display: grid;
@@ -136,18 +139,18 @@ body #root {
           transform: translate(-50%, -50%);
 }
 
-.main-section li p {
+.main-section li h3 {
   -ms-grid-column: 2;
   grid-column: 2;
   -ms-grid-row: 1;
   grid-row: 1;
-  font-size: 1.25rem;
+  font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.main-section li p:hover {
+.main-section li h3:hover {
   white-space: normal;
 }
 
@@ -168,13 +171,13 @@ body #root {
   transition: 0.4s;
 }
 
-.main-section li .task-menu .task-menu-toggler.active {
+.main-section li .task-menu .task-menu-toggler.active, .main-section li .task-menu .task-menu-toggler:hover {
   background-color: rgba(255, 255, 255, 0.2);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
-.main-section li .task-menu div {
+.main-section li .task-menu .task-options {
   -webkit-animation: fadeOut 0.4s;
           animation: fadeOut 0.4s;
   background-color: #1f336e;
@@ -188,28 +191,28 @@ body #root {
   z-index: 10;
 }
 
-.main-section li .task-menu div button {
+.main-section li .task-menu .task-options button {
   padding: 0.75rem 1rem;
   color: white;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 
-.main-section li .task-menu div button:hover {
+.main-section li .task-menu .task-options button:hover {
   background-color: rgba(255, 255, 255, 0.2);
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 
-.main-section li .task-menu div .update {
+.main-section li .task-menu .task-options .update {
   border-radius: 0.5rem 0 0 0.5rem;
 }
 
-.main-section li .task-menu div .delete {
+.main-section li .task-menu .task-options .delete {
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
-.main-section li .task-menu div.active {
+.main-section li .task-menu .task-options.active {
   -webkit-animation: fadeIn 0.4s;
           animation: fadeIn 0.4s;
   display: -webkit-box;
@@ -244,8 +247,29 @@ body #root {
   background-image: linear-gradient(#237bff, #eb06ff);
 }
 
-.main-section li.completed p {
+.main-section li.completed h3 {
   color: #a0a0a0;
   text-decoration: line-through;
+}
+
+.main-section li.show {
+  -webkit-animation: fadeIn 0.4s;
+          animation: fadeIn 0.4s;
+  opacity: 1;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.main-section li.hide {
+  height: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.main-section li.hide button, .main-section li.hide h3, .main-section li.hide .task-options {
+  display: none;
 }
 /*# sourceMappingURL=Task.css.map */

@@ -32,37 +32,37 @@ ol, ul {
 }
 
 @-webkit-keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 }
 
 @keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes fadeOut {
-  from {
+  0% {
     opacity: 1;
   }
-  to {
+  100% {
     opacity: 0;
   }
 }
 
 @keyframes fadeOut {
-  from {
+  0% {
     opacity: 1;
   }
-  to {
+  100% {
     opacity: 0;
   }
 }
@@ -121,7 +121,7 @@ body #root {
 }
 
 #menu .avatar h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 #menu .input-list {
@@ -266,7 +266,8 @@ body #root {
 
 @media only screen and (min-width: 786px) {
   #menu {
-    width: 35%;
+    width: 30%;
+    padding: 4.5rem 2rem 0;
   }
   #menu .open-main-section {
     display: none;

@@ -6,6 +6,7 @@
 // 1200px and up: large laptops and desktops
 
 // Colors
+$charcoal: rgb(70, 70, 70);
 $columbia-blue: rgb(151, 180, 255);
 $dark-gray: rgb(160, 160, 160);
 $dodger-blue: rgb(35, 123, 255);
@@ -24,8 +25,9 @@ $background-4: $scarlet;
 $background-5: $lemon;
 $background-6: $midnight-blue;
 $background-7: linear-gradient($dodger-blue, $psychedelic-purple);
-$button-border-1: $midnight-blue;
+$button-border: $midnight-blue;
 $checkbox-border: linear-gradient($dodger-blue, $psychedelic-purple);
+$task-border: $lochmara;
 $word-color-1: $white;
 $word-color-2: $lemon;
 $word-color-3: $dark-gray;
@@ -33,11 +35,21 @@ $word-color-4: $dodger-blue;
 
 // Animations
 @keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; }
-      to { opacity: 0; }
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }

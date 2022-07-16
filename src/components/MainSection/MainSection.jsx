@@ -9,7 +9,7 @@ export const MainSection = (props) => {
 
     const HandleClickOutside = (e) => {
         let chosenTask = task.map((name) => {
-            if (e.target.classList.contains("task-menu-toggler") === false && e.target.closest("div").classList.contains("task-options") === false) {
+            if (e.target.classList.contains("task-menu-toggler") === false && e.target.classList.contains("fa-ellipsis-vertical") === false && e.target.closest("div").classList.contains("task-options") === false) {
                 name.isActive = false
             }
             return name
@@ -133,7 +133,7 @@ export const MainSection = (props) => {
             </button>
             <div className={"list-content order-" + props.listOrder}>
                 <div className="list-header">
-                    <h1>{props.listName}</h1>
+                    <h2>{props.listName}</h2>
                     <div className="list-btn">
                         <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark} title="Bookmark">
                             <i className="fa-solid fa-star"></i>

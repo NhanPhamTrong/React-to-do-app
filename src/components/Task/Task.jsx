@@ -46,11 +46,12 @@ export const Task = (props) => {
     }
 
     return (
-        <li className={props.isCompleted ? "completed" : ""} style={props.isShown ? {display : "grid"} : {display : "none"}}>
+        // <li className={props.isCompleted ? "completed" : ""} style={props.isShown ? {opacity : "1"} : {opacity : "0", height : "0", padding : "0", border : "0"}}>
+        <li className={(props.isCompleted ? "completed " : "") + (props.isShown ? "show" : "hide")}>
             <button className="checkbox" type="button" onClick={CompletedTask}>
                 <i className="fa-solid fa-check"></i>
             </button>
-            <p>{props.text}</p>
+            <h3>{props.text}</h3>
             <div className="task-menu">
                 <button className={"task-menu-toggler " + (props.isActive ? "active" : "")} type="button" order={props.id} onClick={ClickTaskMenuToggler}>
                     <i className="fa-solid fa-ellipsis-vertical"></i>
