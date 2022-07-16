@@ -33,7 +33,9 @@ export const Task = (props) => {
     }
 
     const CompletedTask = (e) => {
-        props.onCompleted(props.id)
+        if (e.target.closest("div").classList.contains("task-menu") === false) {
+            props.onCompleted(props.id)
+        }
     }
 
     if (edit.id) {
@@ -46,9 +48,8 @@ export const Task = (props) => {
     }
 
     return (
-        // <li className={props.isCompleted ? "completed" : ""} style={props.isShown ? {opacity : "1"} : {opacity : "0", height : "0", padding : "0", border : "0"}}>
-        <li className={(props.isCompleted ? "completed " : "") + (props.isShown ? "show" : "hide")}>
-            <button className="checkbox" type="button" onClick={CompletedTask}>
+        <li className={(props.isCompleted ? "completed " : "") + (props.isShown ? "show" : "hide")} onClick={CompletedTask}>
+            <button className="checkbox" type="button">
                 <i className="fa-solid fa-check"></i>
             </button>
             <h3>{props.text}</h3>

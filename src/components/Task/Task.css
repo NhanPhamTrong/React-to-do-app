@@ -159,6 +159,7 @@ body #root {
   grid-column: 3;
   -ms-grid-row: 1;
   grid-row: 1;
+  border-radius: 10rem;
   position: relative;
 }
 
