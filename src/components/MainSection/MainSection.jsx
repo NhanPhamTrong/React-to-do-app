@@ -2,6 +2,7 @@ import "./MainSection.scss";
 import { useEffect, useState } from "react";
 import { Form } from "../Form";
 import { Task } from "../Task/Task";
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 export const MainSection = (props) => {
     const [task, setTask] = useState([])
@@ -126,6 +127,16 @@ export const MainSection = (props) => {
         setTask(chosenTask);
     }
 
+    function handleOnDragEnd(result) {
+        if (!result.destination) return;
+
+        const items = Array.from(task);
+        const [reorderedItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderedItem);
+
+        setTask(items)
+    }
+
     return (
         <div className={"main-section" + (props.isActive ? " active" : "") + (props.isOpen ? " open" : "")}>
             <button className="close-main-section" type="button" onClick={CloseMainSection} title="Menu">
@@ -146,11 +157,20 @@ export const MainSection = (props) => {
 
                 <Form type="input-task" onSubmit={AddTask} />
 
-                <ul>
-                    {task.map((name, index) => (
-                        <Task key={name.id} text={name.text} id={name.id} isActive={name.isActive} isCompleted={name.isCompleted} isShown={name.isShown} onDeleteTask={DeleteTask} onUpdate={UpdateTask} onCompleted={CompletedTask} onClick={ClickTaskMenuToggler} />
-                    ))}
-                </ul>
+                <DragDropContext onDragEnd={handleOnDragEnd}>
+                    <Droppable droppableId="task-list">
+                        {(provided) => (
+                            <ul className="task-list" {...provided.droppableProps} ref={provided.innerRef}>
+                                {task.map((name, index) => {
+                                    return (
+                                        <Task key={name.id} index={index} stringId={name.id.toString()} text={name.text} id={name.id} isActive={name.isActive} isCompleted={name.isCompleted} isShown={name.isShown} onDeleteTask={DeleteTask} onUpdate={UpdateTask} onCompleted={CompletedTask} onClick={ClickTaskMenuToggler}/>
+                                    )
+                                })}
+                                {provided.placeholder}
+                            </ul>
+                        )}
+                    </Droppable>
+                </DragDropContext>
 
                 <div className="statistic">
                     <button className={statistic[0] ? "active" : ""} type="button" onClick={GetAll}>All</button>

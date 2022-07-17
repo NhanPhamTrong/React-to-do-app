@@ -43,13 +43,3 @@ $word-color-4: $dodger-blue;
         opacity: 1;
     }
 }
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}

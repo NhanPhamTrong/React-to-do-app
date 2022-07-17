@@ -3,7 +3,6 @@
 .main-section {
     li {
         padding: 1rem;
-        animation-duration: 0.4s;
         background-color: $background-1;
         border: $task-border solid;
         border-width: 1px 0;
@@ -77,7 +76,6 @@
             }
     
             .task-options {
-                animation: fadeOut 0.4s;
                 background-color: $background-6;
                 border-radius: 0.5rem;
                 display: none;
@@ -145,21 +143,7 @@
         }
     }
 
-    li.show {
-        animation: fadeIn 0.4s;
-        opacity: 1;
-        transition: 0.4s;
-    }
-
     li.hide {
-        height: 0;
-        padding: 0;
-        border: 0;
-        opacity: 0;
-        transition: 0.4s;
-
-        button, h3, .task-options {
-            display: none;
-        }
+        display: none;
     }
 }

@@ -1,6 +1,7 @@
 import "./Task.scss";
 import { useState } from "react";
 import { Form } from "../Form";
+import { Draggable } from "react-beautiful-dnd";
 
 export const Task = (props) => {
     const [edit, setEdit] = useState({
@@ -33,9 +34,7 @@ export const Task = (props) => {
     }
 
     const CompletedTask = (e) => {
-        if (e.target.closest("div").classList.contains("task-menu") === false) {
-            props.onCompleted(props.id)
-        }
+        props.onCompleted(props.id)
     }
 
     if (edit.id) {
@@ -48,20 +47,24 @@ export const Task = (props) => {
     }
 
     return (
-        <li className={(props.isCompleted ? "completed " : "") + (props.isShown ? "show" : "hide")} onClick={CompletedTask}>
-            <button className="checkbox" type="button">
-                <i className="fa-solid fa-check"></i>
-            </button>
-            <h3>{props.text}</h3>
-            <div className="task-menu">
-                <button className={"task-menu-toggler " + (props.isActive ? "active" : "")} type="button" order={props.id} onClick={ClickTaskMenuToggler}>
-                    <i className="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-                <div className={"task-options " + (props.isActive ? "active" : "")}>
-                    <button className="update" type="button" onClick={UpdateTask}>Update</button>
-                    <button className="delete" type="button" onClick={DeleteTask}>Delete</button>
-                </div>
-            </div>
-        </li>
+        <Draggable key={props.stringId} draggableId={props.stringId} index={props.index}>
+            {(provided) => (
+                <li className={(props.isCompleted ? "completed " : "") + (props.isShown ? "" : "hide")} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    <button className="checkbox" type="button" onClick={CompletedTask}>
+                        <i className="fa-solid fa-check"></i>
+                    </button>
+                    <h3>{props.text}</h3>
+                    <div className="task-menu">
+                        <button className={"task-menu-toggler " + (props.isActive ? "active" : "")} type="button" order={props.id} onClick={ClickTaskMenuToggler}>
+                            <i className="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                        <div className={"task-options " + (props.isActive ? "active" : "")}>
+                            <button className="update" type="button" onClick={UpdateTask}>Update</button>
+                            <button className="delete" type="button" onClick={DeleteTask}>Delete</button>
+                        </div>
+                    </div>
+                </li>
+            )}
+        </Draggable>
     )
 }

@@ -2,10 +2,7 @@ import { useState } from "react"
 
 export const Form = (props) => {
     const [input, setInput] = useState(props.type === "update" ? props.edit.value : "");
-    const [openInput, setOpenInput] = useState({
-        inputList: false,
-        inputTask: false
-    })
+    const [openInput, setOpenInput] = useState(false)
 
     const HandleChange = (e) => {
         setInput(e.target.value);
@@ -25,16 +22,10 @@ export const Form = (props) => {
 
     const ClickInputList = (e) => {
         if (e.currentTarget.classList.contains("active")) {
-            setOpenInput(prevValue => ({
-                inputList: false,
-                inputTask: false
-            }))
+            setOpenInput(false)
         }
         else {
-            setOpenInput(prevValue => ({
-                inputList: true,
-                inputTask: false
-            }))
+            setOpenInput(true)
         }
     }
 
@@ -48,10 +39,10 @@ export const Form = (props) => {
     else if (props.type === "input-list") {
         return (
             <form className="input-list" onSubmit={HandleSubmit}>
-                <button className={openInput.inputList ? "active" : ""} type="button" onClick={ClickInputList} title="Add new list">
+                <button className={openInput ? "active" : ""} type="button" onClick={ClickInputList} title="Add new list">
                     <i className="fa-solid fa-plus"></i>
                 </button>
-                <input className={openInput.inputList ? "active" : ""} type="text" placeholder="Your list name..." value={input} onChange={HandleChange} />
+                <input className={openInput ? "active" : ""} type="text" placeholder="Your list name..." value={input} onChange={HandleChange} />
             </form>
         )
     }
