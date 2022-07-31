@@ -17,7 +17,7 @@ export const Menu = (props) => {
     return (
         <div id="menu">
             <div className="open-main-section">
-                <button type="button" onClick={OpenMainSection}>
+                <button type="button" onClick={OpenMainSection} aria-label="Open main section">
                     <i className="fa-solid fa-angle-left"></i>
                 </button>
             </div>
