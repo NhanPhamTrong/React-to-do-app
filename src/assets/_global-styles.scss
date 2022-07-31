@@ -2,8 +2,6 @@
 @import "variables";
 
 body {
-    font-family: 'Noto Sans TC', sans-serif;
-
     #root {
         overflow-x: hidden;
         position: relative;
@@ -11,8 +9,10 @@ body {
 }
 
 @media only screen and (min-width: 786px) {
-    #root {
-        background-color: $background-3;
-        display: flex;
+    body {
+        #root {
+            background-color: $background-3;
+            display: flex;
+        }
     }
 }
