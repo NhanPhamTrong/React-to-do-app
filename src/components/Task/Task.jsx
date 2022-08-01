@@ -52,17 +52,17 @@ export const Task = (props) => {
         <Draggable key={props.stringId} draggableId={props.stringId} index={props.index}>
             {(provided) => (
                 <li className={(props.isCompleted ? "completed " : "") + (props.isShown ? "" : "hide")} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                    <button className="checkbox" type="button" onClick={CompletedTask}>
+                    <button className="checkbox" type="button" onClick={CompletedTask} title="Completed check">
                         <img src={check} alt="Completed check" />
                     </button>
                     <h3>{props.text}</h3>
                     <div className="task-menu">
-                        <button className={"task-menu-toggler " + (props.isActive ? "active" : "")} type="button" order={props.id} onClick={ClickTaskMenuToggler}>
+                        <button className={"task-menu-toggler " + (props.isActive ? "active" : "")} type="button" order={props.id} onClick={ClickTaskMenuToggler} title="Task menu toggler">
                             <img src={taskMenuToggler} alt="Task menu toggler" />
                         </button>
                         <div className={"task-options " + (props.isActive ? "active" : "")}>
-                            <button className="update" type="button" onClick={UpdateTask}>Update</button>
-                            <button className="delete" type="button" onClick={DeleteTask}>Delete</button>
+                            <button className="update" type="button" onClick={UpdateTask} title="Update task">Update</button>
+                            <button className="delete" type="button" onClick={DeleteTask} title="Delete task">Delete</button>
                         </div>
                     </div>
                 </li>

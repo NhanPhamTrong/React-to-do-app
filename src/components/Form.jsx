@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import plus from "../assets/images/plus-solid.svg";
 
 export const Form = (props) => {
     const [input, setInput] = useState(props.type === "update" ? props.edit.value : "");
@@ -39,8 +40,8 @@ export const Form = (props) => {
     else if (props.type === "input-list") {
         return (
             <form className="input-list" onSubmit={HandleSubmit}>
-                <button className={openInput ? "active" : ""} type="button" onClick={ClickInputList}>
-                    <i className="fa-solid fa-plus"></i>
+                <button className={openInput ? "active" : ""} type="button" onClick={ClickInputList} title="Open list input">
+                    <img src={plus} alt="Plus" />
                 </button>
                 <input className={openInput ? "active" : ""} type="text" placeholder="Your list name..." value={input} onChange={HandleChange} />
             </form>

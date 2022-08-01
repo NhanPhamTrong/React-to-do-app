@@ -142,17 +142,17 @@ export const MainSection = (props) => {
 
     return (
         <div className={"main-section" + (props.isActive ? " active" : "") + (props.isOpen ? " open" : "")}>
-            <button className="close-main-section" type="button" onClick={CloseMainSection}>
+            <button className="close-main-section" type="button" onClick={CloseMainSection} title="Close main section">
                 <img src={closeMainSection} alt="Close main section" />
             </button>
             <div className={"list-content order-" + props.listOrder}>
                 <div className="list-header">
                     <h2>{props.listName}</h2>
                     <div className="list-btn">
-                        <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark}>
+                        <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark} title="Bookmark">
                             <img src={bookmarked} alt="Bookmarked" />
                         </button>
-                        <button className="delete" type="button" onClick={DeleteList}>
+                        <button className="delete" type="button" onClick={DeleteList} title="Delete list">
                             <img src={deleteTask} alt="Delete task" />
                         </button>
                     </div>
@@ -176,9 +176,9 @@ export const MainSection = (props) => {
                 </DragDropContext>
 
                 <div className="statistic">
-                    <button className={statistic[0] ? "active" : ""} type="button" onClick={GetAll}>All</button>
-                    <button className={statistic[1] ? "active" : ""} type="button" onClick={GetActive}>Active</button>
-                    <button className={statistic[2] ? "active" : ""} type="button" onClick={GetCompleted}>Completed</button>
+                    <button className={statistic[0] ? "active" : ""} type="button" onClick={GetAll} title="Get all tasks">All</button>
+                    <button className={statistic[1] ? "active" : ""} type="button" onClick={GetActive} title="Get active tasks">Active</button>
+                    <button className={statistic[2] ? "active" : ""} type="button" onClick={GetCompleted} title="Get completed tasks">Completed</button>
                 </div>
             </div>
         </div>

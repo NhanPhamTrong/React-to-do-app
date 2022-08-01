@@ -19,7 +19,7 @@ export const Menu = (props) => {
     return (
         <div id="menu">
             <div className="open-main-section">
-                <button type="button" onClick={OpenMainSection} aria-label="Open main section">
+                <button type="button" onClick={OpenMainSection} aria-label="Open main section" title="Open main section">
                     <img src={openMainSection} alt="Open main section" />
                 </button>
             </div>
@@ -34,7 +34,7 @@ export const Menu = (props) => {
             <ul>
                 {props.list.map((name, index) => (
                     <li key={index} className={name.isActive ? "active" : ""} >
-                        <button type="button" order={name.id} onClick={GetList} >
+                        <button type="button" order={name.id} onClick={GetList} title="Bookmark" >
                             <h2>{name.text}</h2>
                             <img className={name.bookmarked ? "active" : ""} src={bookmarked} alt="Bookmarked" />
                         </button>
