@@ -1,4 +1,4 @@
-@import "../../assets/global-styles/global-styles";
+@import "../../assets/global-styles";
 
 .main-section {
     li {
@@ -21,8 +21,8 @@
             border-radius: 10rem;
             color: $word-color-1;
             position: relative;
-
-            img {
+    
+            i {
                 display: none;
                 position: absolute;
                 left: 50%;
@@ -67,17 +67,7 @@
                 width: 2rem;
                 border-radius: 10rem;
                 color: $word-color-1;
-                position: relative;
                 transition: 0.4s;
-
-                img {
-                    height: 1.25rem;
-                    width: 1.25rem;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                }
             }
     
             .task-menu-toggler.active, .task-menu-toggler:hover {
@@ -136,8 +126,8 @@
     li.completed {
         .checkbox {
             background-image: none;
-
-            img {
+    
+            i {
                 display: block;
             }
         }

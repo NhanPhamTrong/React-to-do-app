@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import { Form } from "../Form";
 import { Task } from "../Task/Task";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import bookmarked from "../../assets/images/star-solid-white.svg";
-import closeMainSection from "../../assets/images/bars-solid.svg";
-import deleteTask from "../../assets/images/trash-can-solid.svg";
 
 export const MainSection = (props) => {
     const [task, setTask] = useState([])
@@ -143,17 +140,17 @@ export const MainSection = (props) => {
     return (
         <div className={"main-section" + (props.isActive ? " active" : "") + (props.isOpen ? " open" : "")}>
             <button className="close-main-section" type="button" onClick={CloseMainSection} title="Close main section">
-                <img src={closeMainSection} alt="Close main section" />
+                <i className="fa-solid fa-bars"></i>
             </button>
             <div className={"list-content order-" + props.listOrder}>
                 <div className="list-header">
                     <h2>{props.listName}</h2>
                     <div className="list-btn">
                         <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark} title="Bookmark">
-                            <img src={bookmarked} alt="Bookmarked" />
+                            <i className="fa-solid fa-star"></i>
                         </button>
-                        <button className="delete" type="button" onClick={DeleteList} title="Delete list">
-                            <img src={deleteTask} alt="Delete task" />
+                        <button className="delete" type="button" onClick={DeleteList} title="Delete this list">
+                            <i className="fa-solid fa-trash-can"></i>
                         </button>
                     </div>
                 </div>
@@ -176,9 +173,9 @@ export const MainSection = (props) => {
                 </DragDropContext>
 
                 <div className="statistic">
-                    <button className={statistic[0] ? "active" : ""} type="button" onClick={GetAll} title="Get all tasks">All</button>
-                    <button className={statistic[1] ? "active" : ""} type="button" onClick={GetActive} title="Get active tasks">Active</button>
-                    <button className={statistic[2] ? "active" : ""} type="button" onClick={GetCompleted} title="Get completed tasks">Completed</button>
+                    <button className={statistic[0] ? "active" : ""} type="button" onClick={GetAll}>All</button>
+                    <button className={statistic[1] ? "active" : ""} type="button" onClick={GetActive}>Active</button>
+                    <button className={statistic[2] ? "active" : ""} type="button" onClick={GetCompleted}>Completed</button>
                 </div>
             </div>
         </div>
