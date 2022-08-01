@@ -2,6 +2,8 @@ import "./Task.scss";
 import { useState } from "react";
 import { Form } from "../Form";
 import { Draggable } from "react-beautiful-dnd";
+import check from "../../assets/images/check-solid.svg";
+import taskMenuToggler from "../../assets/images/ellipsis-vertical-solid.svg";
 
 export const Task = (props) => {
     const [edit, setEdit] = useState({
@@ -51,12 +53,12 @@ export const Task = (props) => {
             {(provided) => (
                 <li className={(props.isCompleted ? "completed " : "") + (props.isShown ? "" : "hide")} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                     <button className="checkbox" type="button" onClick={CompletedTask}>
-                        <i className="fa-solid fa-check"></i>
+                        <img src={check} alt="Completed check" />
                     </button>
                     <h3>{props.text}</h3>
                     <div className="task-menu">
                         <button className={"task-menu-toggler " + (props.isActive ? "active" : "")} type="button" order={props.id} onClick={ClickTaskMenuToggler}>
-                            <i className="fa-solid fa-ellipsis-vertical"></i>
+                            <img src={taskMenuToggler} alt="Task menu toggler" />
                         </button>
                         <div className={"task-options " + (props.isActive ? "active" : "")}>
                             <button className="update" type="button" onClick={UpdateTask}>Update</button>

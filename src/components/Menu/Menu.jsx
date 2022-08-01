@@ -1,5 +1,7 @@
 import "./Menu.scss";
 import { Form } from "../Form";
+import bookmarked from "../../assets/images/star-solid-lemon.svg";
+import openMainSection from "../../assets/images/angle-left-solid.svg";
 
 export const Menu = (props) => {
     const AddList = (newList) => {
@@ -18,7 +20,7 @@ export const Menu = (props) => {
         <div id="menu">
             <div className="open-main-section">
                 <button type="button" onClick={OpenMainSection} aria-label="Open main section">
-                    <i className="fa-solid fa-angle-left"></i>
+                    <img src={openMainSection} alt="Open main section" />
                 </button>
             </div>
 
@@ -34,9 +36,7 @@ export const Menu = (props) => {
                     <li key={index} className={name.isActive ? "active" : ""} >
                         <button type="button" order={name.id} onClick={GetList} >
                             <h2>{name.text}</h2>
-                            <span className={name.bookmarked ? "active" : ""}>
-                                <i className="fa-solid fa-star"></i>
-                            </span>
+                            <img className={name.bookmarked ? "active" : ""} src={bookmarked} alt="Bookmarked" />
                         </button>
                     </li>
                 ))}

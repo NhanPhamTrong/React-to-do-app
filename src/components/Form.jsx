@@ -39,7 +39,7 @@ export const Form = (props) => {
     else if (props.type === "input-list") {
         return (
             <form className="input-list" onSubmit={HandleSubmit}>
-                <button className={openInput ? "active" : ""} type="button" onClick={ClickInputList} title="Add new list">
+                <button className={openInput ? "active" : ""} type="button" onClick={ClickInputList}>
                     <i className="fa-solid fa-plus"></i>
                 </button>
                 <input className={openInput ? "active" : ""} type="text" placeholder="Your list name..." value={input} onChange={HandleChange} />

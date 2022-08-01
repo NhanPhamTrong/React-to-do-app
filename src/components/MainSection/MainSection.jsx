@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { Form } from "../Form";
 import { Task } from "../Task/Task";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import bookmarked from "../../assets/images/star-solid-white.svg";
+import closeMainSection from "../../assets/images/bars-solid.svg";
+import deleteTask from "../../assets/images/trash-can-solid.svg";
 
 export const MainSection = (props) => {
     const [task, setTask] = useState([])
@@ -10,7 +13,7 @@ export const MainSection = (props) => {
 
     const HandleClickOutside = (e) => {
         let chosenTask = task.map((name) => {
-            if (e.target.classList.contains("task-menu-toggler") === false && e.target.classList.contains("fa-ellipsis-vertical") === false && e.target.closest("div").classList.contains("task-options") === false) {
+            if (e.target.classList.contains("task-menu-toggler") === false && e.target.closest("div").classList.contains("task-options") === false) {
                 name.isActive = false
             }
             return name
@@ -139,18 +142,18 @@ export const MainSection = (props) => {
 
     return (
         <div className={"main-section" + (props.isActive ? " active" : "") + (props.isOpen ? " open" : "")}>
-            <button className="close-main-section" type="button" onClick={CloseMainSection} title="Menu">
-                <i className="fa-solid fa-bars"></i>
+            <button className="close-main-section" type="button" onClick={CloseMainSection}>
+                <img src={closeMainSection} alt="Close main section" />
             </button>
             <div className={"list-content order-" + props.listOrder}>
                 <div className="list-header">
                     <h2>{props.listName}</h2>
                     <div className="list-btn">
-                        <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark} title="Bookmark">
-                            <i className="fa-solid fa-star"></i>
+                        <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark}>
+                            <img src={bookmarked} alt="Bookmarked" />
                         </button>
-                        <button className="delete" type="button" onClick={DeleteList} title="Delete this list">
-                            <i className="fa-solid fa-trash-can"></i>
+                        <button className="delete" type="button" onClick={DeleteList}>
+                            <img src={deleteTask} alt="Delete task" />
                         </button>
                     </div>
                 </div>
