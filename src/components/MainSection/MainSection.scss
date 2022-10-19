@@ -89,7 +89,8 @@
             max-height: 16.5rem;
             border-radius: 1rem;
             display: grid;
-            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .statistic {
@@ -108,11 +109,6 @@
             button.active {
                 color: $word-color-4;
                 transform: scale(1.15) translate(0);
-            }
-
-            button:hover {
-                transform: scale(1.15) translate(0);
-                transition: 0.2s;
             }
         }
     }

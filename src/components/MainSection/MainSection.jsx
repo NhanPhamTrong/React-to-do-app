@@ -1,8 +1,8 @@
-import "./MainSection.scss";
-import { useEffect, useState } from "react";
-import { Form } from "../Form";
-import { Task } from "../Task/Task";
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import "./MainSection.scss"
+import { useEffect, useState } from "react"
+import { Form } from "../Form"
+import { Task } from "../Task/Task"
+import { Reorder, AnimatePresence } from "framer-motion"
 
 export const MainSection = (props) => {
     const [task, setTask] = useState([])
@@ -14,9 +14,9 @@ export const MainSection = (props) => {
                 name.isActive = false
             }
             return name
-        });
+        })
 
-        setTask(chosenTask);
+        setTask(chosenTask)
     }
 
     const CloseMainSection = () => {
@@ -32,14 +32,14 @@ export const MainSection = (props) => {
                 name.isActive = false
             }
             return name
-        });
+        })
 
-        setTask(chosenTask);
+        setTask(chosenTask)
     }
 
     const AddTask = (newTask) => {
         if (newTask.text.trim().length !== 0) {
-            task.push(newTask);
+            task.push(newTask)
         }
 
         setTask((prevValue) => [...prevValue])
@@ -74,9 +74,8 @@ export const MainSection = (props) => {
     }
 
     const Bookmark = (e) => {
-        e.currentTarget.classList.toggle("active");
-
-        props.onBookmark(props.listOrder);
+        e.currentTarget.classList.toggle("active")
+        props.onBookmark(props.listOrder)
     }
 
     const CompletedTask = (id) => {
@@ -85,7 +84,7 @@ export const MainSection = (props) => {
                 name.isCompleted = name.isCompleted ? false : true
             }
             return name
-        });
+        })
 
         setTask(chosenTask)
 
@@ -102,9 +101,9 @@ export const MainSection = (props) => {
         let chosenTask = task.map((name) => {
             name.isShown = name.isCompleted ? true : false
             return name
-        });
+        })
 
-        setTask(chosenTask);
+        setTask(chosenTask)
     }
 
     const GetActive = () => {
@@ -112,9 +111,9 @@ export const MainSection = (props) => {
         let chosenTask = task.map((name) => {
             name.isShown = name.isCompleted ? false : true
             return name
-        });
+        })
 
-        setTask(chosenTask);
+        setTask(chosenTask)
     }
 
     const GetAll = () => {
@@ -122,19 +121,9 @@ export const MainSection = (props) => {
         let chosenTask = task.map((name) => {
             name.isShown = true
             return name
-        });
+        })
 
-        setTask(chosenTask);
-    }
-
-    function handleOnDragEnd(result) {
-        if (!result.destination) return;
-
-        const items = Array.from(task);
-        const [reorderedItem] = items.splice(result.source.index, 1);
-        items.splice(result.destination.index, 0, reorderedItem);
-
-        setTask(items)
+        setTask(chosenTask)
     }
 
     return (
@@ -157,20 +146,17 @@ export const MainSection = (props) => {
 
                 <Form type="input-task" onSubmit={AddTask} />
 
-                <DragDropContext onDragEnd={handleOnDragEnd}>
-                    <Droppable droppableId="task-list">
-                        {(provided) => (
-                            <ul className="task-list" {...provided.droppableProps} ref={provided.innerRef}>
-                                {task.map((name, index) => {
-                                    return (
-                                        <Task key={name.id} index={index} stringId={name.id.toString()} text={name.text} id={name.id} isActive={name.isActive} isCompleted={name.isCompleted} isShown={name.isShown} onDeleteTask={DeleteTask} onUpdate={UpdateTask} onCompleted={CompletedTask} onClick={ClickTaskMenuToggler}/>
-                                    )
-                                })}
-                                {provided.placeholder}
-                            </ul>
-                        )}
-                    </Droppable>
-                </DragDropContext>
+                <AnimatePresence mode="popLayout">
+                    <Reorder.Group axis="y" values={task} onReorder={setTask}>
+                        {/* <AnimatePresence mode="popLayout"> */}
+                            {task.map((item) => {
+                                return (
+                                    <Task key={item.id} item={item} onDeleteTask={DeleteTask} onUpdate={UpdateTask} onCompleted={CompletedTask} onClick={ClickTaskMenuToggler}/>
+                                )
+                            })}
+                        {/* </AnimatePresence> */}
+                    </Reorder.Group>
+                </AnimatePresence>
 
                 <div className="statistic">
                     <button className={statistic[0] ? "active" : ""} type="button" onClick={GetAll}>All</button>

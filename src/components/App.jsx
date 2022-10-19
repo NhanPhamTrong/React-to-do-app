@@ -1,6 +1,6 @@
-import { MainSection } from "./MainSection/MainSection";
-import { useState } from "react";
-import { Menu } from "./Menu/Menu";
+import { MainSection } from "./MainSection/MainSection"
+import { useState } from "react"
+import { Menu } from "./Menu/Menu"
 
 export const App = () => {
     const [list, setList] = useState([])
@@ -20,19 +20,19 @@ export const App = () => {
 
     const AddList = (newList) => {
         if (newList.text.trim().length !== 0) {
-            list.push(newList);
+            list.push(newList)
         }
 
-        setList((prevValue) => [...prevValue]);
+        setList((prevValue) => [...prevValue])
     }
 
     const GetList = (e) => {
-        const order = parseInt(e.currentTarget.getAttribute("order"));
+        const order = parseInt(e.currentTarget.getAttribute("order"))
 
         let chosenList = list.map((name) => {
             name.isActive = name.id === order ? true : false
             return name
-        });
+        })
 
         setList(chosenList)
         setMainSectionOpen(false)
@@ -48,9 +48,9 @@ export const App = () => {
                 name.bookmarked = name.bookmarked ? false : true
             }
             return name
-        });
+        })
 
-        setList(chosenList);
+        setList(chosenList)
     }
 
     return (

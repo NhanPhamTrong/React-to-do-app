@@ -8,13 +8,9 @@
         border-width: 1px 0;
         color: $word-color-1;
         display: grid;
-        grid-template-columns: auto 1fr;
-        grid-column-gap: 0.5rem;
-        align-items: center;
-    
+        grid-template-columns: 3rem 1fr auto;
+
         .checkbox {
-            grid-column: 1;
-            grid-row: 1;
             height: 2rem;
             width: 2rem;
             background-image: $checkbox-border;
@@ -42,26 +38,24 @@
             top: 50%;
             transform: translate(-50%, -50%);
         }
-    
+
         h3 {
-            grid-column: 2;
-            grid-row: 1;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            line-height: 2rem;
         }
     
         h3:hover {
             white-space: normal;
         }
-    
+
         .task-menu {
-            grid-column: 3;
-            grid-row: 1;
+            margin-left: 0.5rem;
             border-radius: 10rem;
             position: relative;
-    
+
             .task-menu-toggler {
                 height: 2rem;
                 width: 2rem;
@@ -110,40 +104,40 @@
                 display: flex;
             }
         }
-    
-        .update-task {
-            grid-column: 2;
-            grid-row: 1;
-    
-            input {
-                width: 100%;
-                padding: 0.5rem;
-                border-radius: 0.5rem;
-            }
+    }
+
+    .update-task {
+        grid-column: 2;
+        grid-row: 1;
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
         }
     }
-    
-    li.completed {
-        .checkbox {
-            background-image: none;
-    
-            i {
-                display: block;
-            }
-        }
-    
-        .checkbox:before {
-            background-color: transparent;
-            background-image: $background-7;
-        }
-    
-        h3 {
-            color: $word-color-3;
-            text-decoration: line-through;
+}
+
+li.completed {
+    .checkbox {
+        background-image: none;
+        
+        i {
+            display: block;
         }
     }
 
-    li.hide {
-        display: none;
+    .checkbox:before {
+        background-color: transparent;
+        background-image: $background-7;
     }
+
+    h3 {
+        color: $word-color-3;
+        text-decoration: line-through;
+    }
+}
+
+li.hide {
+    display: none;
 }
