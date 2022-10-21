@@ -9,11 +9,11 @@ export const MainSection = (props) => {
     const [statistic, setStatistic] = useState([true, false, false])
 
     const HandleClickOutside = (e) => {
-        let chosenTask = task.map((name) => {
+        let chosenTask = task.map((item) => {
             if (e.target.classList.contains("task-menu-toggler") === false && e.target.closest("div").classList.contains("task-options") === false) {
-                name.isActive = false
+                item.isActive = false
             }
-            return name
+            return item
         })
 
         setTask(chosenTask)
@@ -24,14 +24,14 @@ export const MainSection = (props) => {
     }
 
     const ClickTaskMenuToggler = (order) => {
-        let chosenTask = task.map((name) => {
-            if (name.id === order) {
-                name.isActive = name.isActive ? false : true
+        let chosenTask = task.map((item) => {
+            if (item.id === order) {
+                item.isActive = item.isActive ? false : true
             }
             else {
-                name.isActive = false
+                item.isActive = false
             }
-            return name
+            return item
         })
 
         setTask(chosenTask)
@@ -57,11 +57,11 @@ export const MainSection = (props) => {
     })
 
     const DeleteTask = (id) => {
-        setTask(prevValue => prevValue.filter((name) => name.id !== id))
+        setTask(prevValue => prevValue.filter((item) => item.id !== id))
     }
 
     const DeleteList = () => {
-        props.onDeleteList(props.listOrder)
+        props.onDeleteList(props.item.id)
     }
 
     const UpdateTask = (id, newValue) => {
@@ -69,21 +69,21 @@ export const MainSection = (props) => {
             return
         }
         else {
-            setTask(prevValue => prevValue.map((name) => (name.id === id ? newValue : name)))
+            setTask(prevValue => prevValue.map((item) => (item.id === id ? newValue : item)))
         }
     }
 
     const Bookmark = (e) => {
         e.currentTarget.classList.toggle("active")
-        props.onBookmark(props.listOrder)
+        props.onBookmark(props.item.id)
     }
 
     const CompletedTask = (id) => {
-        let chosenTask = task.map((name) => {
-            if (name.id === id) {
-                name.isCompleted = name.isCompleted ? false : true
+        let chosenTask = task.map((item) => {
+            if (item.id === id) {
+                item.isCompleted = item.isCompleted ? false : true
             }
-            return name
+            return item
         })
 
         setTask(chosenTask)
@@ -98,9 +98,9 @@ export const MainSection = (props) => {
 
     const GetCompleted = () => {
         setStatistic([false, false, true])
-        let chosenTask = task.map((name) => {
-            name.isShown = name.isCompleted ? true : false
-            return name
+        let chosenTask = task.map((item) => {
+            item.isShown = item.isCompleted ? true : false
+            return item
         })
 
         setTask(chosenTask)
@@ -108,9 +108,9 @@ export const MainSection = (props) => {
 
     const GetActive = () => {
         setStatistic([false, true, false])
-        let chosenTask = task.map((name) => {
-            name.isShown = name.isCompleted ? false : true
-            return name
+        let chosenTask = task.map((item) => {
+            item.isShown = item.isCompleted ? false : true
+            return item
         })
 
         setTask(chosenTask)
@@ -118,52 +118,50 @@ export const MainSection = (props) => {
 
     const GetAll = () => {
         setStatistic([true, false, false])
-        let chosenTask = task.map((name) => {
-            name.isShown = true
-            return name
+        let chosenTask = task.map((item) => {
+            item.isShown = true
+            return item
         })
 
         setTask(chosenTask)
     }
 
     return (
-        <div className={"main-section" + (props.isActive ? " active" : "") + (props.isOpen ? " open" : "")}>
-            <button className="close-main-section" type="button" onClick={CloseMainSection} title="Close main section">
-                <i className="fa-solid fa-bars"></i>
-            </button>
-            <div className={"list-content order-" + props.listOrder}>
-                <div className="list-header">
-                    <h2>{props.listName}</h2>
-                    <div className="list-btn">
-                        <button className={"bookmark " + (props.bookmarked ? " active" : "")} type="button" onClick={Bookmark} title="Bookmark">
-                            <i className="fa-solid fa-star"></i>
-                        </button>
-                        <button className="delete" type="button" onClick={DeleteList} title="Delete this list">
-                            <i className="fa-solid fa-trash-can"></i>
-                        </button>
+        <div className={"main-section" + (props.item.isActive ? " active" : "") + (props.isOpen ? " open" : "")}>
+                <button className="close-main-section" type="button" onClick={CloseMainSection} title="Close main section">
+                    <ion-icon name="list-outline"></ion-icon>
+                </button>
+                <div className={"list-content order-" + props.item.id}>
+                    <div className="list-header">
+                        <h2>{props.item.text}</h2>
+                        <div className="list-btn">
+                            <button className={"bookmark " + (props.item.bookmarked ? " active" : "")} type="button" onClick={Bookmark} title="Bookmark">
+                                <ion-icon name="star"></ion-icon>
+                            </button>
+                            <button className="delete" type="button" onClick={DeleteList} title="Delete this list">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <Form type="input-task" onSubmit={AddTask} />
+                    <Form type="input-task" onSubmit={AddTask} />
 
-                <AnimatePresence mode="popLayout">
-                    <Reorder.Group axis="y" values={task} onReorder={setTask}>
-                        {/* <AnimatePresence mode="popLayout"> */}
+                    <AnimatePresence mode="popLayout">
+                        <Reorder.Group axis="y" values={task} onReorder={setTask}>
                             {task.map((item) => {
                                 return (
                                     <Task key={item.id} item={item} onDeleteTask={DeleteTask} onUpdate={UpdateTask} onCompleted={CompletedTask} onClick={ClickTaskMenuToggler}/>
                                 )
                             })}
-                        {/* </AnimatePresence> */}
-                    </Reorder.Group>
-                </AnimatePresence>
+                        </Reorder.Group>
+                    </AnimatePresence>
 
-                <div className="statistic">
-                    <button className={statistic[0] ? "active" : ""} type="button" onClick={GetAll}>All</button>
-                    <button className={statistic[1] ? "active" : ""} type="button" onClick={GetActive}>Active</button>
-                    <button className={statistic[2] ? "active" : ""} type="button" onClick={GetCompleted}>Completed</button>
+                    <div className="statistic">
+                        <button className={statistic[0] ? "active" : ""} type="button" onClick={GetAll}>All</button>
+                        <button className={statistic[1] ? "active" : ""} type="button" onClick={GetActive}>Active</button>
+                        <button className={statistic[2] ? "active" : ""} type="button" onClick={GetCompleted}>Completed</button>
+                    </div>
                 </div>
-            </div>
         </div>
     )
 }

@@ -56,8 +56,8 @@ export const App = () => {
     return (
         <>
             <Menu list={list} AddList={AddList} GetList={GetList} onOpenMainSection={OpenMainSection} />
-            {list.map((name, index) => (
-                <MainSection key={name.id} listOrder={name.id} listName={name.text} isActive={name.isActive} isOpen={mainSectionOpen} onCloseMainSection={CloseMainSection} onDeleteList={DeleteList} onBookmark={Bookmark} />
+            {list.map((item, index) => (
+                <MainSection key={item.id} item={item} isOpen={mainSectionOpen} onCloseMainSection={CloseMainSection} onDeleteList={DeleteList} onBookmark={Bookmark} />
             ))}
         </>
     )

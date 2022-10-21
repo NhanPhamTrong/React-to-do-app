@@ -40,7 +40,7 @@ export const Form = (props) => {
         return (
             <form className="input-list" onSubmit={HandleSubmit}>
                 <button className={openInput ? "active" : ""} type="button" onClick={ClickInputList} title="Open list input">
-                    <i className="fa-solid fa-plus"></i>
+                    <ion-icon name="add"></ion-icon>
                 </button>
                 <input className={openInput ? "active" : ""} type="text" placeholder="Your list name..." value={input} onChange={HandleChange} />
             </form>

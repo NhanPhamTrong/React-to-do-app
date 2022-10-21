@@ -18,24 +18,24 @@ export const Menu = (props) => {
         <div id="menu">
             <div className="open-main-section">
                 <button type="button" onClick={OpenMainSection} title="Open main section">
-                    <i className="fa-solid fa-angle-left"></i>
+                    <ion-icon name="chevron-back"></ion-icon>
                 </button>
             </div>
 
             <div className="avatar">
                 <img src="" alt="" />
-                <h1 className="name">Nhan Pham</h1>
+                <h1 className="name">Name</h1>
             </div>
 
             <Form type="input-list" onSubmit={AddList} />
 
             <ul>
-                {props.list.map((name, index) => (
-                    <li key={index} className={name.isActive ? "active" : ""} >
-                        <button type="button" order={name.id} onClick={GetList} >
-                            <h2>{name.text}</h2>
-                            <span className={name.bookmarked ? "active" : ""}>
-                                <i className="fa-solid fa-star"></i>
+                {props.list.map((item, index) => (
+                    <li key={index} className={item.isActive ? "active" : ""} >
+                        <button type="button" order={item.id} onClick={GetList} >
+                            <h2>{item.text}</h2>
+                            <span className={item.bookmarked ? "active" : ""}>
+                                <ion-icon name="star"></ion-icon>
                             </span>
                         </button>
                     </li>

@@ -3,27 +3,26 @@
 .main-section {
     li {
         padding: 1rem;
-        background-color: $background-1;
-        border: $task-border solid;
+        background-color: $primary;
+        border: $primary-variant solid;
         border-width: 1px 0;
-        color: $word-color-1;
+        color: $on-primary;
         display: grid;
         grid-template-columns: 3rem 1fr auto;
 
         .checkbox {
             height: 2rem;
             width: 2rem;
-            background-image: $checkbox-border;
+            background-image: $gradient;
             border-radius: 10rem;
-            color: $word-color-1;
+            color: $on-primary;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
-    
-            i {
+            
+            ion-icon {
                 display: none;
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
             }
         }
     
@@ -31,7 +30,7 @@
             content: "";
             height: calc(2rem - 4px);
             width: calc(2rem - 4px);
-            background-color: $background-6;
+            background-color: $primary-variant;
             border-radius: 10rem;
             position: absolute;
             left: 50%;
@@ -60,7 +59,7 @@
                 height: 2rem;
                 width: 2rem;
                 border-radius: 10rem;
-                color: $word-color-1;
+                color: $on-primary;
                 transition: 0.4s;
             }
     
@@ -70,7 +69,7 @@
             }
     
             .task-options {
-                background-color: $background-6;
+                background-color: $primary-variant;
                 border-radius: 0.5rem;
                 display: none;
                 position: absolute;
@@ -81,7 +80,7 @@
     
                 button {
                     padding: 0.75rem 1rem;
-                    color: $word-color-1;
+                    color: $on-primary;
                     transition: 0.2s;
                 }
     
@@ -122,18 +121,18 @@ li.completed {
     .checkbox {
         background-image: none;
         
-        i {
+        ion-icon {
             display: block;
         }
     }
 
     .checkbox:before {
         background-color: transparent;
-        background-image: $background-7;
+        background-image: $gradient;
     }
 
     h3 {
-        color: $word-color-3;
+        color: $on-primary-variant;
         text-decoration: line-through;
     }
 }

@@ -53,14 +53,15 @@ export const Task = (props) => {
             layout
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}>
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.4 }}>
                 <button className="checkbox" type="button" onClick={CompletedTask} title="Completed task">
-                    <i className="fa-solid fa-check"></i>
+                    <ion-icon name="checkmark"></ion-icon>
                 </button>
                 <h3>{props.item.text}</h3>
                 <div className="task-menu">
                     <button className={"task-menu-toggler " + (props.item.isActive ? "active" : "")} type="button" order={props.item.id} onClick={ClickTaskMenuToggler} title="Task menu toggler">
-                        <i className="fa-solid fa-ellipsis-vertical"></i>
+                        <ion-icon name="ellipsis-vertical"></ion-icon>
                     </button>
                     <div className={"task-options " + (props.item.isActive ? "active" : "")}>
                         <button className="update" type="button" onClick={UpdateTask}>Update</button>
